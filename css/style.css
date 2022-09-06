@@ -215,6 +215,7 @@ body {
   border: 3px solid #b59f5b;
   padding: 38px 32px;
   align-items: flex-end;
+  width: 100%;
 }
 
 .page {
@@ -375,14 +376,16 @@ width: 100%;
 }
 
 .goods-card {
-  /*height: 264px;*/
+  height: 436px;
   flex: 1 0 0;
   position: relative;
   padding: 28px 24px;
-  margin-top: 170px;
+  /* margin-top: 170px; */
   margin-right: 65px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0;
   }
 
 .goods-card:last-child {
@@ -396,11 +399,12 @@ width: 100%;
   height: 100%;
   position: absolute;
   z-index: 1;
-  top: 0;
+  bottom: 0;
+  height: 264px;
 }
 
 .goods-info {
-  padding-top: 25px;
+  padding-top: 15px;
   z-index: 2;
   font-family: OpenSans, sans-serif ;
 }
@@ -409,7 +413,7 @@ width: 100%;
   font-size: 20px;
   font-weight: bold;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 6px;
 }
 
 .goods-description {
@@ -427,7 +431,7 @@ width: 100%;
 }
 
 .goods-text {
-  margin-bottom: 27px;
+  margin-bottom: 18px;
 }
 
 .goods-buy {
@@ -447,7 +451,7 @@ width: 100%;
   font-weight: bold;
 }
 
-.goods-button button {
+.goods-button .button {
   width: 140px;
   height: 50px;
   font-size: 14px;
@@ -457,6 +461,9 @@ width: 100%;
   color: #ffffff;
   font-weight: bold;
   text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .goods-card-img-mobile {
@@ -464,8 +471,8 @@ width: 100%;
 }
 
 .card-img {
-   position: absolute;
-   top: -170px;
+   /* position: absolute; */
+   /* top: -170px; */
    z-index: 0;
 }
 
@@ -729,6 +736,11 @@ width: 100%;
     flex: initial;
     margin-right: 12px;
     margin-bottom: 28px;
+    height: 456px;
+  }
+
+  .goods-card::before {
+    height: 264px;
   }
 
   .trend {
@@ -748,6 +760,8 @@ width: 100%;
 
     .news {
       flex-direction: column;
+      border-bottom: #eeeeee solid 3px;
+      padding-bottom: 18px;
     }
 
     .main {
@@ -844,6 +858,10 @@ width: 100%;
     margin-bottom: 44px;
 }
 
+   .news {
+    padding-bottom: 0px;
+   }
+
    .news-img {
     width: 100%;
    }
@@ -890,14 +908,15 @@ width: 100%;
 
    .goods-card {
     width: 100%;
-    padding-left: 16xpx;
+    padding-left: 16px;
     padding-right: 16px;
-    margin-top: 254px;
     margin-right: 0px;
+    height: 510px;
    }
 
    .goods-card::before {
     left: 0;
+    height: 260px;
    }
 
    .goods-cards {
@@ -915,20 +934,6 @@ width: 100%;
     margin-left: 14px;
     margin-right: 14px;
    }
-
-   .goods-card-img-desc {
-    display: none;
-   }
-
-   .goods-card-img-mobile {
-    display: block;
-   }
-
-   .card-img {
-    top: -254px;
-   }
-
-
 }
 
 .popup-container {
@@ -938,7 +943,7 @@ width: 100%;
   left: 0;
   right: 0;
   display: flex;
-  display: none; /* убрать, чтоб показать */
+  display: none; /*убрать, чтоб показать */
   z-index: 1000;
   justify-content: center;
   align-items: center;
@@ -973,6 +978,8 @@ width: 100%;
   top: -26px;
   right: 0;
   cursor: pointer;
+  background-image: url(../svg/form-x.svg);
+  background-size: 18px;
 }
 
 .popup-header {
@@ -1036,29 +1043,16 @@ width: 100%;
 
 }
 
-.frequency-select label img {
+.frequency-select label::before {
+  content: "";
+  background-image: url(../svg/form-arrows.svg);
+  background-size: 7px 16px;
   width: 7px;
   height: 16px;
+  cursor: pointer;
 }
 
 .subscription-radio input {
-  display: none;
-}
-
-.subscription-radio img {
-  width: 18px;
-  height: 18px;
-}
-
-.subscription-radio label .radio-active {
-  display: none;
-}
-
-.subscription-radio input:checked + label .radio-active {
-  display: block;
-}
-
-.subscription-radio input:checked + label .radio-inactive {
   display: none;
 }
 
@@ -1068,6 +1062,22 @@ width: 100%;
 
 .subscription-radio .radio-button label {
   display: flex;
+}
+
+.subscription-radio .radio-button label::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  display: flex;
+  background-size: 18px;  
+}
+
+.subscription-radio input:checked + label::before {
+  background-image: url(../svg/form-circle.svg);
+}
+
+.subscription-radio input:not(:checked) + label::before {
+  background-image: url(../svg/form-empty-circle.svg);
 }
 
 .subscription-radio .radio-button {
